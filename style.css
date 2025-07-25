@@ -141,6 +141,24 @@ body {
     background-color: #ffe0b2;
 }
 
+/* Nuevo estilo para el botón de copiar resultados */
+.copy-button {
+    background-color: #28a745; /* Color verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: #218838;
+}
+
+
 @media (max-width: 768px) {
     .quiz-container {
         grid-template-columns: 1fr;
