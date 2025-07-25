@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Trigonometría: Ángulos Notables</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimitadores para ecuaciones inline
+                displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimitadores para ecuaciones en bloque
+            },
+            svg: {
+                fontCache: 'global'
+            },
+            startup: {
+                typeset: true // Esto le dice a MathJax que procese al cargar la página
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div id="timer-container">Tiempo restante: 05:00</div>
+        <div class="question-column">
+            <div class="question-box" data-correct="$\frac{1}{2}$">
+                <div class="question-text">
+                    1. ¿Cuál es el valor exacto de $\sin(30^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$\frac{\sqrt{3}}{2}$</button>
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">$\frac{1}{2}$</button>
+                    <button class="option-button">$0$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$\frac{\sqrt{2}}{2}$">
+                <div class="question-text">
+                    2. ¿Cuánto es $\cos(45^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$\frac{\sqrt{2}}{2}$</button>
+                    <button class="option-button">$\frac{1}{2}$</button>
+                    <button class="option-button">$\frac{\sqrt{3}}{2}$</button>
+                    <button class="option-button">$0$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$\frac{\sqrt{3}}{2}$">
+                <div class="question-text">
+                    3. Determina el valor de $\sin(60^\circ)$.
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$\frac{1}{2}$</button>
+                    <button class="option-button">$\frac{\sqrt{3}}{2}$</button>
+                    <button class="option-button">$\frac{\sqrt{2}}{2}$</button>
+                    <button class="option-button">$1$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$\frac{1}{2}$">
+                <div class="question-text">
+                    4. ¿Cuál es el valor de $\cos(60^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$\frac{\sqrt{3}}{2}$</button>
+                    <button class="option-button">$\frac{\sqrt{2}}{2}$</button>
+                    <button class="option-button">$\frac{1}{2}$</button>
+                    <button class="option-button">$0$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$1$">
+                <div class="question-text">
+                    5. ¿Cuánto es $\tan(45^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$\sqrt{3}$</button>
+                    <button class="option-button">$\frac{\sqrt{3}}{3}$</button>
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">$1$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$\frac{\sqrt{3}}{3}$">
+                <div class="question-text">
+                    6. El valor de $\tan(30^\circ)$ es:
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$\sqrt{3}$</button>
+                    <button class="option-button">$\frac{\sqrt{3}}{3}$</button>
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">$0$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$\sqrt{3}$">
+                <div class="question-text">
+                    7. ¿Cuál es el valor de $\tan(60^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$\frac{\sqrt{3}}{3}$</button>
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">$\sqrt{3}$</button>
+                    <button class="option-button">Indefinido</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$2$">
+                <div class="question-text">
+                    8. Encuentra el valor de $\csc(30^\circ)$.
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$\frac{1}{2}$</button>
+                    <button class="option-button">$2$</button>
+                    <button class="option-button">$\frac{\sqrt{3}}{2}$</button>
+                    <button class="option-button">$\frac{2\sqrt{3}}{3}$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$\sqrt{2}$">
+                <div class="question-text">
+                    9. ¿Cuánto es $\sec(45^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$\frac{\sqrt{2}}{2}$</button>
+                    <button class="option-button">$2$</button>
+                    <button class="option-button">$\sqrt{2}$</button>
+                    <button class="option-button">$\frac{2\sqrt{3}}{3}$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$\sqrt{3}$">
+                <div class="question-text">
+                    10. El valor de $\cot(30^\circ)$ es:
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$\frac{\sqrt{3}}{3}$</button>
+                    <button class="option-button">$\sqrt{3}$</button>
+                    <button class="option-button">$\frac{2\sqrt{3}}{3}$</button>
+                    <button class="option-button">$1$</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-column">
+            <div class="question-box" data-correct="$0$">
+                <div class="question-text">
+                    11. ¿Cuál es el valor de $\sin(0^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">Indefinido</button>
+                    <button class="option-button">$\frac{1}{2}$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$1$">
+                <div class="question-text">
+                    12. ¿Cuánto es $\cos(0^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">$-1$</button>
+                    <button class="option-button">Indefinido</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$0$">
+                <div class="question-text">
+                    13. Determina el valor de $\tan(0^\circ)$.
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">Indefinido</button>
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">$-1$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$1$">
+                <div class="question-text">
+                    14. ¿Cuál es el valor de $\sin(90^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">Indefinido</button>
+                    <button class="option-button">$-1$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$0$">
+                <div class="question-text">
+                    15. ¿Cuánto es $\cos(90^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">Indefinido</button>
+                    <button class="option-button">$-1$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="Indefinido">
+                <div class="question-text">
+                    16. El valor de $\tan(90^\circ)$ es:
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">Indefinido</button>
+                    <button class="option-button">$-1$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$-1$">
+                <div class="question-text">
+                    17. ¿Cuál es el valor de $\sin(270^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">$-1$</button>
+                    <button class="option-button">Indefinido</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$0$">
+                <div class="question-text">
+                    18. ¿Cuánto es $\cos(270^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">$-1$</button>
+                    <button class="option-button">Indefinido</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="$0$">
+                <div class="question-text">
+                    19. Determina el valor de $\cot(90^\circ)$.
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">Indefinido</button>
+                    <button class="option-button">$-1$</button>
+                </div>
+            </div>
+
+            <div class="question-box" data-correct="Indefinido">
+                <div class="question-text">
+                    20. ¿Cuál es el valor de $\csc(180^\circ)$?
+                </div>
+                <div class="options-grid">
+                    <button class="option-button">$1$</button>
+                    <button class="option-button">$0$</button>
+                    <button class="option-button">Indefinido</button>
+                    <button class="option-button">$-1$</button>
+                </div>
+            </div>
+        </div>
+
+        <button class="submit-button" onclick="checkAnswers()">Listo</button>
+        <div id="results">
+            <p>¡Quiz completado!</p>
+            <p>Tiempo transcurrido: <span id="time-taken">00:00</span></p>
+            <p>Respuestas correctas: <span id="correct-count">0</span></p>
+            <p>Respuestas incorrectas: <span id="incorrect-count">0</span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
