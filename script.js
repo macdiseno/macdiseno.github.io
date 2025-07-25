@@ -105,3 +105,27 @@ function checkAnswers() {
     document.getElementById('results').style.display = 'block';
     submitButton.style.display = 'none';
 }
+
+// NUEVA FUNCIÓN para copiar resultados al portapapeles
+function copyResults() {
+    const timeTaken = document.getElementById('time-taken').textContent;
+    const correctCount = document.getElementById('correct-count').textContent;
+    const incorrectCount = document.getElementById('incorrect-count').textContent;
+
+    // Puedes personalizar este mensaje como quieras
+    const resultsText = `¡He completado el Quiz de Trigonometría!\n` +
+                        `Tiempo: ${timeTaken}\n` +
+                        `Respuestas correctas: ${correctCount}\n` +
+                        `Respuestas incorrectas: ${incorrectCount}\n` +
+                        `¡Intenta superarme! https://macdiseno.github.io/`; // ¡Asegúrate de que esta sea la URL correcta de tu quiz!
+
+    // Usar la API del Portapapeles
+    navigator.clipboard.writeText(resultsText)
+        .then(() => {
+            alert('¡Resultados copiados al portapapeles! Ahora puedes pegarlos en WhatsApp o donde quieras.');
+        })
+        .catch(err => {
+            console.error('Error al copiar: ', err);
+            alert('No se pudieron copiar los resultados automáticamente. Por favor, selecciona el texto y cópialo manualmente.');
+        });
+}
