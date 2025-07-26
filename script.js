@@ -40,6 +40,7 @@ function disableQuiz() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // MathJax ahora se inicializa y renderiza automáticamente desde el HTML
     startTimer();
 
     questionBoxes.forEach(box => {
@@ -73,7 +74,7 @@ function checkAnswers() {
         const options = box.querySelectorAll('.option-button');
 
         if (selectedOption) {
-            // *** CAMBIO CLAVE AQUÍ: Ahora compara el data-value del botón con el data-correct de la pregunta ***
+            // *** Aquí comparamos el data-value del botón con el data-correct de la pregunta ***
             const selectedValue = selectedOption.dataset.value.trim(); 
 
             if (selectedValue === correctAnswer) { // Comparación de strings exactos
@@ -114,11 +115,12 @@ function copyResults() {
     const correctCount = document.getElementById('correct-count').textContent;
     const incorrectCount = document.getElementById('incorrect-count').textContent;
 
-    const resultsText = `¡He completado el Quiz de Geometría Plana!\n` +
+    // Mensaje para el quiz de Trigonometría
+    const resultsText = `¡He completado el Quiz de Trigonometría: Ángulos Notables!\n` + 
                         `Tiempo: ${timeTaken}\n` +
                         `Respuestas correctas: ${correctCount}\n` +
                         `Respuestas incorrectas: ${incorrectCount}\n` +
-                        `¡Intenta superarme! https://macdiseno.github.io/`; 
+                        `¡Intenta superarme! https://macdiseno.github.io/`; // ¡Asegúrate de que esta sea la URL de tu quiz de Trigonometría!
 
     navigator.clipboard.writeText(resultsText)
         .then(() => {
