@@ -40,7 +40,6 @@ function disableQuiz() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // MathJax ahora se inicializa y renderiza automáticamente desde el HTML
     startTimer();
 
     questionBoxes.forEach(box => {
@@ -69,13 +68,15 @@ function checkAnswers() {
 
     questionBoxes.forEach(box => {
         const selectedOption = box.querySelector('.option-button.selected');
-        const correctAnswer = box.dataset.correct;
+        const correctAnswer = box.dataset.correct.trim(); // Obtén la respuesta correcta del data-correct del contenedor
 
         const options = box.querySelectorAll('.option-button');
 
         if (selectedOption) {
-            // Comparamos el texto del botón con la respuesta correcta (string LaTeX)
-            if (selectedOption.textContent.trim() === correctAnswer.trim()) {
+            // *** CAMBIO CLAVE AQUÍ: Ahora compara el data-value del botón con el data-correct de la pregunta ***
+            const selectedValue = selectedOption.dataset.value.trim(); 
+
+            if (selectedValue === correctAnswer) { // Comparación de strings exactos
                 selectedOption.classList.add('correct');
                 correctCount++;
             } else {
@@ -83,7 +84,8 @@ function checkAnswers() {
                 incorrectCount++;
                 // Resaltar la respuesta correcta si la seleccionada fue incorrecta
                 options.forEach(opt => {
-                    if (opt.textContent.trim() === correctAnswer.trim()) {
+                    // *** También aquí usamos data-value para encontrar la respuesta correcta ***
+                    if (opt.dataset.value.trim() === correctAnswer) {
                         opt.classList.add('correct');
                     }
                 });
@@ -92,7 +94,8 @@ function checkAnswers() {
             // Si no se seleccionó ninguna opción, cuenta como incorrecta y resalta la correcta
             incorrectCount++;
             options.forEach(opt => {
-                if (opt.textContent.trim() === correctAnswer.trim()) {
+                // *** También aquí usamos data-value para encontrar la respuesta correcta ***
+                if (opt.dataset.value.trim() === correctAnswer) {
                     opt.classList.add('correct');
                 }
             });
@@ -106,20 +109,17 @@ function checkAnswers() {
     submitButton.style.display = 'none';
 }
 
-// NUEVA FUNCIÓN para copiar resultados al portapapeles
 function copyResults() {
     const timeTaken = document.getElementById('time-taken').textContent;
     const correctCount = document.getElementById('correct-count').textContent;
     const incorrectCount = document.getElementById('incorrect-count').textContent;
 
-    // Puedes personalizar este mensaje como quieras
-    const resultsText = `¡He completado el Quiz de Trigonometría!\n` +
+    const resultsText = `¡He completado el Quiz de Geometría Plana!\n` +
                         `Tiempo: ${timeTaken}\n` +
                         `Respuestas correctas: ${correctCount}\n` +
                         `Respuestas incorrectas: ${incorrectCount}\n` +
-                        `¡Intenta superarme! https://macdiseno.github.io/`; // ¡Asegúrate de que esta sea la URL correcta de tu quiz!
+                        `¡Intenta superarme! https://macdiseno.github.io/`; 
 
-    // Usar la API del Portapapeles
     navigator.clipboard.writeText(resultsText)
         .then(() => {
             alert('¡Resultados copiados al portapapeles! Ahora puedes pegarlos en WhatsApp o donde quieras.');
